@@ -1,0 +1,52 @@
+DOCUMENT 1: Onboarding Guide
+Last Updated: February 15, 2026
+------------------------------------------------------------
+Welcome to Acme Corp! This guide walks new engineers through their first two weeks. On day one, you will receive your laptop, access to GitHub, Jira, and Slack, and an invitation to the #general and #engineering channels. Your manager, Maya, will schedule a 1:1 during your first week to discuss your goals and team assignment.
+
+During week one, you should clone the main monorepo, set up your local development environment using the setup script in the /tools directory, and complete the security awareness training. Pair with a buddy from your team to ship a small starter ticket, usually a documentation fix or a minor bug, so you can learn the code review and merge process.
+
+In week two, you will shadow an on-call rotation and attend the weekly architecture sync. If you have questions about tooling or access, ask in #general or contact the Platform Team. Please keep this guide handy, and suggest edits through a pull request to the docs repository.
+
+
+============================================================
+DOCUMENT 2: Deployment Process
+Last Updated: February 15, 2026
+------------------------------------------------------------
+This document describes how Acme Corp deploys services to production. All deployments must go through the CI pipeline and require at least one approving code review. Deployments are permitted Monday through Thursday between 10:00 AM and 4:00 PM IST. Avoid Friday deployments unless approved by the Engineering Manager.
+
+To deploy a service, merge your pull request into the main branch and wait for the CI checks to pass. Then run "Script A" from the deploy repository, passing the service name and target environment as arguments (for example: ./script_a.sh payments-service production). Script A builds the container image, pushes it to the registry, and rolls out the new version to the cluster.
+
+After the rollout completes, verify service health on the monitoring dashboard and watch error rates for at least 15 minutes. If you see elevated errors, roll back immediately using the rollback flag on Script A and notify the #devops channel. Contact the Platform Team for any deployment issues.
+
+
+============================================================
+DOCUMENT 3: Payment System Overview
+Last Updated: July 15, 2026
+------------------------------------------------------------
+The Acme Corp payment system handles all customer billing, subscription renewals, and refunds. It consists of three main components: the Payment API, the Gateway Adapter, and the Reconciliation Service. The Payment API receives requests from the web and mobile clients, validates them, and records the transaction state in the primary database.
+
+The Gateway Adapter communicates with our third-party payment processor. It handles retries, idempotency keys, and webhook callbacks for asynchronous payment events. Requests to the processor currently use a 10-second timeout, and failed requests are retried up to three times with exponential backoff.
+
+The Reconciliation Service runs nightly to compare internal transaction records against processor settlement reports and flags discrepancies for review. The Payments Team owns this system, and questions should be directed to the #payments channel.
+
+
+============================================================
+DOCUMENT 4: Architecture Notes
+Last Updated: September 15, 2026
+------------------------------------------------------------
+Acme Corp's platform is organized as a set of loosely coupled services running on a managed Kubernetes cluster. Services communicate through a combination of REST APIs for synchronous calls and a message queue for asynchronous events. Each service owns its own data store, and no service may read another service's database directly.
+
+The edge layer consists of an API gateway that handles authentication, rate limiting, and request routing. Behind the gateway, core services include Accounts, Payments, Notifications, and Reporting. Observability is provided through centralized logging, metrics dashboards, and distributed tracing, all accessible from the monitoring portal.
+
+Recent changes include migrating the Notifications service to an event-driven model and consolidating shared libraries into a single internal package. Future work includes introducing a service mesh and moving to multi-region deployments. Proposed changes should be discussed at the weekly architecture sync before implementation.
+
+
+============================================================
+DOCUMENT 5: Incident Response Plan
+Last Updated: December 15, 2025
+------------------------------------------------------------
+This plan defines how Acme Corp responds to production incidents. An incident is any unplanned event that degrades or interrupts customer-facing services. Incidents are classified as SEV-1 (full outage), SEV-2 (major degradation), or SEV-3 (minor impact). All SEV-1 and SEV-2 incidents require an incident commander and a dedicated channel in Slack.
+
+When an incident is detected, the on-call engineer acknowledges the alert, assesses severity, and posts an initial update in #incidents. For SEV-1 incidents, escalate immediately to the on-call contacts listed in the escalation table at the end of this document. Provide updates every 30 minutes until the incident is resolved.
+
+After resolution, the incident commander must schedule a blameless postmortem within five business days. The postmortem should document the timeline, root cause, customer impact, and follow-up action items, which are tracked as Jira tickets. Postmortem summaries are shared in #engineering.

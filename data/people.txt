@@ -1,0 +1,18 @@
+Name: Rahul
+Role: DevOps Engineer
+Team: Platform Team
+
+============================================================
+Name: Priya
+Role: Backend Engineer
+Team: Payments Team
+
+============================================================
+Name: Arjun
+Role: Technical Writer
+Team: Platform Team
+
+============================================================
+Name: Maya
+Role: Engineering Manager
+Team: Platform Team

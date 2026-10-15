@@ -1,0 +1,37 @@
+Channel: #devops
+Date: September 24, 2026
+Author: Priya
+------------------------------------------------------------
+"Has anyone updated the deploy guide? It still says Script A."
+
+
+============================================================
+Channel: #devops
+Date: September 24, 2026
+Author: Rahul
+------------------------------------------------------------
+"Yeah, we switched to Script B in ENG-4421. I'll update the doc."
+
+
+============================================================
+Channel: #general
+Date: August 15, 2026
+Author: Arjun
+------------------------------------------------------------
+"New onboarding docs are live, check them out."
+
+
+============================================================
+Channel: #payments
+Date: September 15, 2026
+Author: Priya
+------------------------------------------------------------
+"Payment gateway is stable now, the fix is in production."
+
+
+============================================================
+Channel: #incidents
+Date: October 8, 2026
+Author: Arjun
+------------------------------------------------------------
+"If production goes down, ping Rahul or Priya first."

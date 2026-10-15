@@ -3,6 +3,7 @@ Title: Update deploy pipeline to Script B
 Status: Closed
 Date Closed: August 15, 2026
 Author: Rahul
+Changes: Deployment Process
 ------------------------------------------------------------
 Replaced Script A with Script B in the deployment pipeline. Script B supports parallel rollouts and automatic rollback on failed health checks. All services have been migrated and Script A has been deprecated.
 
@@ -13,6 +14,7 @@ Title: Fix payment gateway timeout
 Status: Closed
 Date Closed: September 15, 2026
 Author: Priya
+Changes: Payment System Overview
 ------------------------------------------------------------
 Resolved intermittent timeouts between the Gateway Adapter and the payment processor by tuning connection pooling and adjusting retry behavior. The fix has been deployed to production and error rates have returned to baseline.
 
@@ -23,6 +25,7 @@ Title: Document new architecture
 Status: Closed
 Date Closed: September 24, 2026
 Author: Arjun
+Changes: Architecture Notes
 ------------------------------------------------------------
 Documented the current service architecture, including the API gateway, core services, and messaging layer. Diagrams and written notes were added to the docs repository.
 
@@ -33,6 +36,7 @@ Title: Update incident response contacts
 Status: Closed
 Date Closed: October 8, 2026
 Author: Rahul
+Changes: Incident Response Plan
 ------------------------------------------------------------
 Updated the on-call escalation contacts to reflect recent team changes. The primary and secondary contacts for production incidents have been revised in the on-call tool.
 
@@ -43,5 +47,6 @@ Title: Deploy guide is outdated
 Status: Open
 Date Opened: September 25, 2026
 Author: Priya
+Changes: Deployment Process
 ------------------------------------------------------------
 The Deployment Process document still references Script A, which was deprecated in favor of Script B. New engineers following the guide will run the wrong script. The document needs to be updated to match the current pipeline.

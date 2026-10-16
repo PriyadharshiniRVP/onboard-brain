@@ -1,7 +1,0 @@
-falkordb
-fastapi
-uvicorn
-openai
-python-dotenv
-streamlit
-requests

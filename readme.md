@@ -210,5 +210,5 @@ onboarding-brain/
 
 ## Author
 
-**Priyadharshini R** — [GitHub](https://github.com/PriyadharshiniRVP)
+**Priyadharshini R** — [GitHub](https://www.linkedin.com/in/priyadharshini-ramachandran-535903217/)
 
